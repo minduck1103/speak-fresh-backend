@@ -9,7 +9,7 @@ const OrderSchema = new mongoose.Schema({
     delivery: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
-        default: null // shipper được gán
+        default: null 
     },
     items: [
         {

@@ -14,18 +14,18 @@ exports.createOrder = asyncHandler(async (req, res, next) => {
         itemsPrice,
         taxPrice,
         shippingPrice,
-        totalPrice
+        totalAmount
     } = req.body;
 
     const order = await Order.create({
-        orderItems,
+        items: orderItems,
         user: req.user.id,
         shippingInfo,
-        paymentInfo,
+        paymentMethod: (paymentInfo?.method || 'COD').toUpperCase(),
         itemsPrice,
         taxPrice,
         shippingPrice,
-        totalPrice
+        totalAmount
     });
 
     res.status(201).json({
